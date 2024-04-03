@@ -1,0 +1,29 @@
+# config.yaml
+model:
+  vocab_size: 50257
+  dim: 768
+  max_len: 1024
+  num_heads: 12
+  num_layers: 12
+  dropout: 0.1
+
+training:
+  batch_size: 32
+  learning_rate: 1e-4
+  max_epochs: 10
+  gradient_accumulation_steps: 1
+  lr_decay_strategy: 'cosine'  # Options: 'cosine', 'linear', 'constant'
+  lr_decay_steps: 1000
+  min_lr: 1e-6
+  eval_interval: 1000  # Evaluate model every X steps
+  log_interval: 100  # Log training loss every X steps
+  wandb_project: 'your-project-name'
+  wandb_run_name: 'transformer-model'
+  save_dir: 'checkpoints'  # Directory to save model checkpoints
+  patience: 3  # Number of epochs to wait before early stopping
+
+data:
+  dataset_name: 'openwebtext'
+  tokenizer_name: 'gpt2'
+  max_length: 512
+  val_split: 0.1  # Fraction of dataset to use for validation
